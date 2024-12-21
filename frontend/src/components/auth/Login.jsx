@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import Navbar from '../shared/Navbar'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading, setUser } from '@/redux/authSlice'
 import { Loader2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const Login = () => {
     const [input, setInput] = useState({
@@ -52,7 +53,7 @@ const Login = () => {
         if(user){
             navigate("/");
         }
-    },[])
+    },)
     return (
         <div>
             <Navbar />
@@ -66,7 +67,7 @@ const Login = () => {
                             value={input.email}
                             name="email"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="email@mail.com"
                         />
                     </div>
 
@@ -77,7 +78,7 @@ const Login = () => {
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="password"
                         />
                     </div>
                     <div className='flex items-center justify-between'>
@@ -109,7 +110,7 @@ const Login = () => {
                     {
                         loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> : <Button type="submit" className="w-full my-4">Login</Button>
                     }
-                    <span className='text-sm'>Don't have an account? <Link to="/signup" className='text-blue-600'>Signup</Link></span>
+                    <span className='text-sm'>Dont have an account? <Link to="/signup" className='text-blue-600'>Signup</Link></span>
                 </form>
             </div>
         </div>

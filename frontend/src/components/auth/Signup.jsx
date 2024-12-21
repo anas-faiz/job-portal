@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import Navbar from '../shared/Navbar'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/redux/authSlice'
 import { Loader2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const Signup = () => {
 
@@ -66,7 +67,7 @@ const Signup = () => {
         if(user){
             navigate("/");
         }
-    },[])
+    },)
     return (
         <div>
             <Navbar />
@@ -80,7 +81,7 @@ const Signup = () => {
                             value={input.fullname}
                             name="fullname"
                             onChange={changeEventHandler}
-                            placeholder="patel"
+                            placeholder="john"
                         />
                     </div>
                     <div className='my-2'>
@@ -90,7 +91,7 @@ const Signup = () => {
                             value={input.email}
                             name="email"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="email@mail.com"
                         />
                     </div>
                     <div className='my-2'>
@@ -110,7 +111,7 @@ const Signup = () => {
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
+                            placeholder="password"
                         />
                     </div>
                     <div className='flex items-center justify-between'>
