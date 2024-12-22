@@ -1,4 +1,5 @@
-
+import { IoIosEyeOff } from "react-icons/io";
+import { IoMdEye } from "react-icons/io";
 import Navbar from '../shared/Navbar'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
@@ -68,6 +69,10 @@ const Signup = () => {
             navigate("/");
         }
     },)
+    const [password,setPassword]=useState(true)
+    const handleCLick = ()=>{
+        setPassword(!password)
+    }
     return (
         <div>
             <Navbar />
@@ -104,15 +109,21 @@ const Signup = () => {
                             placeholder="8080808080"
                         />
                     </div>
-                    <div className='my-2'>
-                        <Label>Password</Label>
+                    <Label>Password</Label>
+                    <div className='flex items-center justify-center my-2 '>
+                        
                         <Input
-                            type="password"
+                            type={password ? "password": "text"}
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
                             placeholder="password"
+                            
                         />
+                        <div className=" -ml-5 cursor-pointer">
+                            {password ? <IoMdEye onClick={handleCLick}/> : <IoIosEyeOff onClick={handleCLick}/>}
+                        
+                        </div>
                     </div>
                     <div className='flex items-center justify-between'>
                         <RadioGroup className="flex items-center gap-4 my-5">

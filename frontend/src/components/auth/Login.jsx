@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoading, setUser } from '@/redux/authSlice'
 import { Loader2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { IoIosEyeOff, IoMdEye } from 'react-icons/io'
 
 const Login = () => {
     const [input, setInput] = useState({
@@ -54,6 +55,10 @@ const Login = () => {
             navigate("/");
         }
     },)
+    const [password,setPassword]=useState(true)
+    const handleCLick = ()=>{
+        setPassword(!password)
+    }
     return (
         <div>
             <Navbar />
@@ -70,16 +75,21 @@ const Login = () => {
                             placeholder="email@mail.com"
                         />
                     </div>
-
-                    <div className='my-2'>
-                        <Label>Password</Label>
+<Label>Password</Label>
+                    <div className='flex items-center justify-center my-2 '>
+                        
                         <Input
-                            type="password"
+                            type={password ? "password": "text"}
                             value={input.password}
                             name="password"
                             onChange={changeEventHandler}
                             placeholder="password"
+                            
                         />
+                        <div className=" -ml-5 cursor-pointer">
+                            {password ? <IoMdEye onClick={handleCLick}/> : <IoIosEyeOff onClick={handleCLick}/>}
+                        
+                        </div>
                     </div>
                     <div className='flex items-center justify-between'>
                         <RadioGroup className="flex items-center gap-4 my-5">
