@@ -20,7 +20,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     email: user?.email || '',
     phoneNumber: user?.phoneNumber || '',
     bio: user?.profile?.bio || '',
-    skills: user?.profile?.skills?.join(', ') || '',  // Assuming skills come as a comma-separated string
+    skills: user?.profile?.skills?.map(skill => skill) || "",  // Assuming skills come as a comma-separated string
     file: null // Initially no file
   });
 
@@ -32,7 +32,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
       email: user?.email || '',
       phoneNumber: user?.phoneNumber || '',
       bio: user?.profile?.bio || '',
-      skills: user?.profile?.skills?.join(', ') || '',
+      skills: user?.profile?.skills?.map(skill => skill) || "",
       file: null
     });
   }, [user]);
@@ -55,8 +55,8 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     formData.append("bio", input.bio);
     
     // Convert skills to an array if they're a comma-separated string
-    const skillsArray = input.skills.split(',').map(skill => skill.trim());
-    formData.append("skills", JSON.stringify(skillsArray));
+    
+    formData.append("skills", input.skills);
 
     if (input.file) {
       formData.append("file", input.file);
