@@ -155,11 +155,11 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                 className="col-span-3"
               />
             </div>
-            {!input.file && (
+            {/* {!input.file && (
               <div className="col-span-4 text-sm text-gray-500">
-                <p>Note: Resume is optional. If not provided, it will not be updated.</p>
+                <p>Note: Resume is Mandatory. If not provided, it will not be updated.</p>
               </div>
-            )}
+            )} */}
           </div>
           <DialogFooter>
             {loading ? (
